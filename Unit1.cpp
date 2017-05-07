@@ -1,6 +1,7 @@
 //---------------------------------------------------------------------------
 //TODO:
-
+// zoom
+// zrobic on click tylko dla canvasa 800x600
 #include <typeinfo>
 #include <cmath>
 
@@ -37,9 +38,15 @@ int goffset = 21;   // 21
 int boffset = 34;   // 34
 int ScrollBar1Position, ScrollBar2Position, ScrollBar3Position;
 
+
+void changeColors(){
+        Form1 -> Color = 0x222222;
+}
+
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner): TForm(Owner)
 {
+        changeColors();
 }
 
 //---------------------------------------------------------------------------
@@ -131,6 +138,7 @@ void draw(){
 
 }
 
+
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
         Button1 -> Enabled = false;
@@ -165,4 +173,49 @@ void __fastcall TForm1::changeBlue(TObject *Sender)
         boffset = ScrollBar3Position;
 }
 //---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::value2Change(TObject *Sender)
+{
+        int ScrollBar4Position = ScrollBar4 -> Position;
+        Label8 -> Caption = ScrollBar4Position;
+        value1Iter = ScrollBar4Position/100.;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::value1Change(TObject *Sender)
+{
+       int ScrollBar5Position = ScrollBar5 -> Position;
+        Label10 -> Caption = ScrollBar5Position;
+        value2Iter = ScrollBar5Position/100.;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::maxIterationsChange(TObject *Sender)
+{
+        int ScrollBar6Position = ScrollBar6 -> Position;
+        Label12 -> Caption = ScrollBar6Position;
+        maxIterations = ScrollBar6Position;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FractalClick(TObject *Sender)
+{
+        TPoint p = Mouse->CursorPos;
+        Form1->ScreenToClient(p);
+        Label13 -> Caption = p.x;
+        Label14 -> Caption = p.y;
+
+        POINT p2;
+        if (GetCursorPos(&p2)){
+                Label13 -> Caption = p2.x;
+                Label14 -> Caption = p2.y;
+        }
+        /*if (ScreenToClient(hwnd, &p2)){
+                //p.x and p.y are now relative to hwnd's client area
+        } */
+        
+}
+//---------------------------------------------------------------------------
+
 
