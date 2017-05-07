@@ -1,9 +1,10 @@
 object Form1: TForm1
-  Left = 295
-  Top = 191
-  Width = 1259
-  Height = 645
+  Left = 310
+  Top = 176
+  BorderStyle = bsDialog
   Caption = 'Fractals'
+  ClientHeight = 600
+  ClientWidth = 1241
   Color = clScrollBar
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

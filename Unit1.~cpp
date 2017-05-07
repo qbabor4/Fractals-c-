@@ -201,19 +201,16 @@ void __fastcall TForm1::maxIterationsChange(TObject *Sender)
 
 void __fastcall TForm1::FractalClick(TObject *Sender)
 {
-        TPoint p = Mouse->CursorPos;
-        Form1->ScreenToClient(p);
-        Label13 -> Caption = p.x;
-        Label14 -> Caption = p.y;
+        POINT p;
+        GetCursorPos(&p);
+        int posX = p.x - Form1 -> Left;
+        int posY = p.y - Form1 -> Top;
+        if (posX < 800 && posY < 600){
+                Label13 -> Caption = posX;
+                Label14 -> Caption = posY;
+        }
+        
 
-        POINT p2;
-        if (GetCursorPos(&p2)){
-                Label13 -> Caption = p2.x;
-                Label14 -> Caption = p2.y;
-        }
-        if (ScreenToClient(hwnd, &p2)){
-                //p.x and p.y are now relative to hwnd's client area
-        }
         
 }
 //---------------------------------------------------------------------------
