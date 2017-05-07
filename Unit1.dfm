@@ -171,32 +171,6 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object Label13: TLabel
-    Left = 888
-    Top = 32
-    Width = 76
-    Height = 24
-    Caption = 'No click'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = -18
-    Font.Name = 'MS Sans Serif'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object Label14: TLabel
-    Left = 992
-    Top = 32
-    Width = 70
-    Height = 24
-    Caption = 'Noclick'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = -18
-    Font.Name = 'MS Sans Serif'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
   object Button1: TButton
     Left = 888
     Top = 504

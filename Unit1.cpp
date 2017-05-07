@@ -1,7 +1,6 @@
 //---------------------------------------------------------------------------
 //TODO:
-// zoom
-// zrobic on click tylko dla canvasa 800x600
+
 #include <typeinfo>
 #include <cmath>
 
@@ -37,6 +36,8 @@ int roffset = 0;   // 0
 int goffset = 21;   // 21
 int boffset = 34;   // 34
 int ScrollBar1Position, ScrollBar2Position, ScrollBar3Position;
+
+bool drawing = false;
 
 
 void changeColors(){
@@ -138,13 +139,18 @@ void draw(){
 
 }
 
+void drawNewfractal(){
+        drawing = true;
+        Form1 -> Button1 -> Enabled = false;
+        generatePalette();
+        draw();
+        Form1 -> Button1 -> Enabled = true;
+        drawing = false;
+}
 
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
-        Button1 -> Enabled = false;
-        generatePalette();
-        draw();
-        Button1 -> Enabled = true;
+        drawNewfractal();
 }
 //---------------------------------------------------------------------------
 
@@ -199,21 +205,29 @@ void __fastcall TForm1::maxIterationsChange(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+void zoomFractal(int x,int  y) {
+        zoom *= 2;
+        panX = 2 * ( x + offsetX + panX );
+        panY = 2 * ( y + offsetY + panY );
+}
+
 void __fastcall TForm1::FractalClick(TObject *Sender)
 {
         POINT p;
         GetCursorPos(&p);
         int posX = p.x - Form1 -> Left;
-        int posY = p.y - Form1 -> Top;
+        int posY = p.y - Form1 -> Top - 30;
         
-        if (posX < 800 && posY < 600){
-                Label13 -> Caption = posX;
-                Label14 -> Caption = posY;
+        if (posX < 800 && posY < 600 && !drawing){
+                zoomFractal(posX, posY);
+                drawNewfractal();
         }
         
 
         
 }
 //---------------------------------------------------------------------------
+
 
 

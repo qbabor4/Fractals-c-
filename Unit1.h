@@ -34,8 +34,6 @@ __published:	// IDE-managed Components
         TLabel *Label10;
         TLabel *Label12;
         TLabel *Label11;
-        TLabel *Label13;
-        TLabel *Label14;
         void __fastcall Button1Click(TObject *Sender);
         void __fastcall changeRed(TObject *Sender);
         void __fastcall changeGreen(TObject *Sender);
